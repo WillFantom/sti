@@ -5,7 +5,7 @@ import (
 	"net/netip"
 
 	iperfcli "github.com/BGrewell/go-iperf"
-	"github.com/willfantom/influx-speedtest/pkg/tester"
+	"github.com/willfantom/sti/pkg/tester"
 )
 
 type Iperf struct {

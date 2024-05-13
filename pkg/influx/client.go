@@ -6,7 +6,7 @@ import (
 	"time"
 
 	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
-	"github.com/willfantom/influx-speedtest/pkg/tester"
+	"github.com/willfantom/sti/pkg/tester"
 )
 
 func WriteData(URL, org, bucket, token string, testName string, result *tester.Result) error {

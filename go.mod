@@ -1,4 +1,4 @@
-module github.com/willfantom/influx-speedtest
+module github.com/willfantom/sti
 
 go 1.21.3
 

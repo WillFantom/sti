@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	st "github.com/showwin/speedtest-go/speedtest"
-	"github.com/willfantom/influx-speedtest/pkg/tester"
+	"github.com/willfantom/sti/pkg/tester"
 )
 
 type Speedtest struct {

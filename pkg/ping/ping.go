@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	pg "github.com/prometheus-community/pro-bing"
-	"github.com/willfantom/influx-speedtest/pkg/tester"
+	"github.com/willfantom/sti/pkg/tester"
 )
 
 // Ping represents a ping test.
