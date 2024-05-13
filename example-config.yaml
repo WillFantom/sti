@@ -1,0 +1,18 @@
+influxToken: "iamasupersecrettoken"
+influxOrg: exampleorg
+influxBucket: examplebucket
+influxURL: "http://localhost:8086"
+
+speedtest:
+  - serverID: "59135"
+
+iperf:
+  - serverIP: "127.0.0.1"
+    serverPort: 5201
+    streams: 4
+    seconds: 20
+    tcp: true
+
+ping:
+  - target: "google.com"
+    count: 5
