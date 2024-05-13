@@ -1,9 +1,11 @@
 FROM golang:1.21-alpine3.18 AS builder
 
 WORKDIR /sti
-COPY . .
+COPY go.mod .
+COPY go.sum .
 RUN go mod download
-RUN go build -o out/sti cmd/sti/*.go
+COPY . .
+RUN go build -trimpath -o out/sti ./cmd/sti/*.go
 
 
 FROM alpine:3.18
