@@ -1,6 +1,5 @@
 *.out
 *.test
 *.prof
-sti
 
 .influxdb
