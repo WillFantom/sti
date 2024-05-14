@@ -15,60 +15,31 @@ import (
 	"github.com/willfantom/sti/pkg/tester"
 )
 
-type Config struct {
-	Speedtest []struct {
-		ServerID string `mapstructure:"serverID"`
-	} `mapstructure:"speedtest"`
-	Iperf []struct {
-		ServerIP   string `mapstructure:"serverIP"`
-		ServerPort int    `mapstructure:"serverPort"`
-		Streams    int    `mapstructure:"streams"`
-		Seconds    int    `mapstructure:"seconds"`
-		TCP        bool   `mapstructure:"tcp"`
-	} `mapstructure:"iperf"`
-	Ping []struct {
-		Target string `mapstructure:"target"`
-		Count  int    `mapstructure:"count"`
-	} `mapstructure:"ping"`
-
-	InfluxURL    string `mapstructure:"influxURL"`
-	InfluxToken  string `mapstructure:"influxToken"`
-	InfluxOrg    string `mapstructure:"influxOrg"`
-	InfluxBucket string `mapstructure:"influxBucket"`
-
-	Interval time.Duration `mapstructure:"interval"`
-	Verbose  bool          `mapstructure:"verbose"`
-}
-
 var (
-	config        Config
-	defaultConfig = map[string]any{
-		"speedtest": []map[string]any{},
-		"iperf":     []map[string]any{},
-		"ping":      []map[string]any{},
+	config Config
 
-		"influxURL":    "http://localhost:8086",
-		"influxToken":  "",
-		"influxOrg":    "",
-		"influxBucket": "",
-		"interval":     60 * time.Second,
-		"verbose":      false,
-	}
 	rootCmd = &cobra.Command{
 		Use:  "sti",
 		Long: "Speed Test Influx (sti) performs a both an internet speed test and an iperf test to a specific site, reporting the results to an InfluxDB instance.",
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
+			// set config path to that set in flag
 			if viper.GetString("config") != "" {
 				viper.SetConfigFile(viper.GetString("config"))
 			}
+
+			// read in the config from file
 			if err := viper.ReadInConfig(); err != nil {
 				if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 					return fmt.Errorf("failed to read config file: %w", err)
 				}
 			}
+
+			// put the config into a config struct
 			if err := viper.Unmarshal(&config); err != nil {
 				return fmt.Errorf("failed to parse config: %w", err)
 			}
+
+			// set verbose logging if flagged
 			if config.Verbose {
 				logrus.SetLevel(logrus.DebugLevel)
 			} else {
@@ -78,23 +49,20 @@ var (
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
 			logrus.Infoln("starting sti")
-			tests := make([]tester.Test, 0)
 
-			// configure speedtests
+			// make testers from configs
+			tests := make([]tester.Test, 0)
 			for _, speedtestConfig := range config.Speedtest {
 				tests = append(tests, speedtest.New(speedtestConfig.ServerID))
 			}
-			// configure iperf tests
 			for _, iperfConfig := range config.Iperf {
 				tests = append(tests, iperf.New(iperfConfig.ServerIP, iperfConfig.ServerPort, iperfConfig.Streams, iperfConfig.Seconds, iperfConfig.TCP))
 			}
-
-			// configure ping tests
 			for _, pingConfig := range config.Ping {
 				tests = append(tests, ping.New(pingConfig.Target, pingConfig.Count))
 			}
 
-			// no tests?
+			// exit if no tests?
 			logrus.WithField("count", len(tests)).Infoln("configured tests")
 			if len(tests) == 0 {
 				logrus.WithError(fmt.Errorf("no tests configured")).Infoln("exiting")
@@ -113,7 +81,7 @@ var (
 						WithField("test", test.Name()).
 						WithFields(test.Config()).
 						Infoln("running test")
-					testResult, err := test.RunTest()
+					testResult, err := test.RunTest() // run the test
 					if err != nil {
 						logrus.
 							WithField("test", test.Name()).
@@ -128,7 +96,7 @@ var (
 							WithField("org", config.InfluxOrg).
 							WithField("bucket", config.InfluxBucket).
 							Infoln("writing data to influx")
-						if err := influx.WriteData(
+						if err := influx.WriteData( // write the data to influx
 							config.InfluxURL,
 							config.InfluxOrg,
 							config.InfluxBucket,
@@ -161,21 +129,6 @@ func main() {
 }
 
 func init() {
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
-	viper.AddConfigPath("$HOME/.config/sti")
-	viper.AddConfigPath("/etc/sti")
-	viper.AutomaticEnv()
-	viper.SetDefault("speedtest", defaultConfig["speedtest"])
-	viper.SetDefault("iperf", defaultConfig["iperf"])
-	viper.SetDefault("ping", defaultConfig["ping"])
-	viper.SetDefault("influxURL", defaultConfig["influxURL"])
-	viper.SetDefault("influxToken", defaultConfig["influxToken"])
-	viper.SetDefault("influxOrg", defaultConfig["influxOrg"])
-	viper.SetDefault("influxBucket", defaultConfig["influxBucket"])
-	viper.SetDefault("interval", defaultConfig["interval"])
-
 	rootCmd.PersistentFlags().String("config", "", "config file (default is $HOME/.config/sti/config.yaml)")
 	viper.BindPFlag("config", rootCmd.PersistentFlags().Lookup("config"))
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "output debug logs")

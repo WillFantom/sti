@@ -5,7 +5,7 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY . .
-RUN go build -trimpath -o out/sti ./cmd/sti/main.go
+RUN go build -trimpath -o out/sti ./cmd/sti/*.go
 
 
 FROM alpine:3.18
