@@ -1,4 +1,4 @@
-# **`sti`**: Network Performance Tests
+# **`sti`**: Network Performance Tests    ![GitHub release (latest SemVer)](https://img.shields.io/github/v/tag/willfantom/sti?display_name=tag&label=%20&sort=semver)
 
 A simple test suite for probing network performance on the running host. This
 runs a set of configurable network tests including:
