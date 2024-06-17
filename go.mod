@@ -2,7 +2,7 @@ module github.com/willfantom/sti
 
 go 1.21.3
 
-require github.com/spf13/cobra v1.8.0
+require github.com/spf13/cobra v1.8.1
 
 require (
 	github.com/BGrewell/go-conversions v0.0.0-20211209224842-146e47cfb964 // indirect
