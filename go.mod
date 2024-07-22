@@ -46,7 +46,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/influxdata/influxdb-client-go/v2 v2.13.0
 	github.com/prometheus-community/pro-bing v0.4.0
-	github.com/showwin/speedtest-go v1.7.7
+	github.com/showwin/speedtest-go v1.7.8
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.19.0
