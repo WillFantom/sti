@@ -26,6 +26,8 @@ type Config struct {
 	InfluxToken  string `mapstructure:"influxToken"`
 	InfluxOrg    string `mapstructure:"influxOrg"`
 	InfluxBucket string `mapstructure:"influxBucket"`
+	InfluxHostname string `mapstructure:"influxHostname"`
+
 
 	Interval time.Duration `mapstructure:"interval"`
 	Verbose  bool          `mapstructure:"verbose"`
@@ -41,6 +43,7 @@ var (
 		"influxToken":  "",
 		"influxOrg":    "",
 		"influxBucket": "",
+		"influxHostname": "",
 		"interval":     60 * time.Second,
 		"verbose":      false,
 	}
@@ -60,5 +63,6 @@ func init() {
 	viper.SetDefault("influxToken", defaultConfig["influxToken"])
 	viper.SetDefault("influxOrg", defaultConfig["influxOrg"])
 	viper.SetDefault("influxBucket", defaultConfig["influxBucket"])
+	viper.SetDefault("influxHostname", defaultConfig["influxHostname"])
 	viper.SetDefault("interval", defaultConfig["interval"])
 }

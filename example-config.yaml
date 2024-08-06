@@ -2,6 +2,7 @@ influxToken: "iamasupersecrettoken"
 influxOrg: exampleorg
 influxBucket: examplebucket
 influxURL: "http://localhost:8086"
+influxHostname: "default"
 
 speedtest:
   - serverID: "59135"

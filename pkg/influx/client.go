@@ -9,8 +9,8 @@ import (
 	"github.com/willfantom/sti/pkg/tester"
 )
 
-func WriteData(URL, org, bucket, token string, testName string, result *tester.Result) error {
-	client := influxdb2.NewClientWithOptions(URL, token, influxdb2.DefaultOptions().SetBatchSize(20).AddDefaultTag("sti", "true"))
+func WriteData(URL, org, bucket, token string, host string, testName string, result *tester.Result) error {
+	client := influxdb2.NewClientWithOptions(URL, token, influxdb2.DefaultOptions().SetBatchSize(20).AddDefaultTag("sti", "true").AddDefaultTag("host", host))
 	alive, err := client.Ping(context.Background())
 	if err != nil {
 		return fmt.Errorf("failed to ping influx instance: %w", err)

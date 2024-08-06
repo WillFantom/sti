@@ -95,12 +95,14 @@ var (
 							WithField("url", config.InfluxURL).
 							WithField("org", config.InfluxOrg).
 							WithField("bucket", config.InfluxBucket).
+							WithField("host", config.InfluxHostame).
 							Infoln("writing data to influx")
 						if err := influx.WriteData( // write the data to influx
 							config.InfluxURL,
 							config.InfluxOrg,
 							config.InfluxBucket,
 							config.InfluxToken,
+							config.InfluxHostame,
 							test.Name(),
 							testResult,
 						); err != nil {
