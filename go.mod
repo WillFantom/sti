@@ -44,7 +44,7 @@ require (
 require (
 	github.com/BGrewell/go-iperf v0.0.0-20231130220520-9a30093ddea1
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/influxdata/influxdb-client-go/v2 v2.13.0
+	github.com/influxdata/influxdb-client-go/v2 v2.14.0
 	github.com/prometheus-community/pro-bing v0.4.1
 	github.com/showwin/speedtest-go v1.7.8
 	github.com/sirupsen/logrus v1.9.3
