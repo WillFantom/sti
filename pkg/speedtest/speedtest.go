@@ -53,10 +53,10 @@ func (t *Speedtest) RunTest() (*tester.Result, error) {
 			"user_isp":       userInfo.Isp,
 		},
 		Data: map[string]any{
-			"latency_ms":     server.Latency.Milliseconds(),
-			"jitter_ms":      server.Jitter.Milliseconds(),
-			"download_speed": server.DLSpeed.Mbps(),
-			"upload_speed":   server.ULSpeed.Mbps(),
+			"ookla_latency_ms":     server.Latency.Milliseconds(),
+			"ookla_jitter_ms":      server.Jitter.Milliseconds(),
+			"ookla_download_speed": server.DLSpeed.Mbps(),
+			"ookla_upload_speed":   server.ULSpeed.Mbps(),
 		},
 	}, nil
 }
