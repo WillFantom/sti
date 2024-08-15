@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/netip"
 
-	iperfcli "github.com/BGrewell/go-iperf"
+	iperfcli "github.com/willfantom/go-iperf"
 	"github.com/willfantom/sti/pkg/tester"
 )
 
