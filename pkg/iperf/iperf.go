@@ -73,7 +73,10 @@ func (t *Iperf) RunTest() (*tester.Result, error) {
 			"tcp":         fmt.Sprintf("%t", t.TCP),
 		},
 		Data: map[string]any{
-			"received_megabits_per_second": (c.Report().End.SumReceived.BitsPerSecond / 1000000),
+			"received_bits_per_second": c.Report().End.SumReceived.BitsPerSecond,
+			"received_bytes":           c.Report().End.SumReceived.Bytes,
+			"sent_bits_per_second":     c.Report().End.SumSent.BitsPerSecond,
+			"sent_bytes":               c.Report().End.SumSent.Bytes,
 		},
 	}, nil
 }
