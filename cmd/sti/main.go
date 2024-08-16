@@ -56,7 +56,7 @@ var (
 				tests = append(tests, speedtest.New(speedtestConfig.ServerID))
 			}
 			for _, iperfConfig := range config.Iperf {
-				tests = append(tests, iperf.New(iperfConfig.ServerIP, iperfConfig.ServerPort, iperfConfig.Streams, iperfConfig.Seconds, iperfConfig.TCP))
+				tests = append(tests, iperf.New(iperfConfig.ServerIP, iperfConfig.ServerPort, iperfConfig.Streams, iperfConfig.Seconds, iperfConfig.TCP, iperfConfig.Bandwidth, iperfConfig.Reverse))
 			}
 			for _, pingConfig := range config.Ping {
 				tests = append(tests, ping.New(pingConfig.Target, pingConfig.Count))

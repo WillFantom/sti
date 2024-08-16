@@ -16,18 +16,19 @@ type Config struct {
 		Streams    int    `mapstructure:"streams"`
 		Seconds    int    `mapstructure:"seconds"`
 		TCP        bool   `mapstructure:"tcp"`
+		Bandwidth  string `mapstructure:"bandwidth"`
+		Reverse    bool   `mapstructure:"reverse"`
 	} `mapstructure:"iperf"`
 	Ping []struct {
 		Target string `mapstructure:"target"`
 		Count  int    `mapstructure:"count"`
 	} `mapstructure:"ping"`
 
-	InfluxURL    string `mapstructure:"influxURL"`
-	InfluxToken  string `mapstructure:"influxToken"`
-	InfluxOrg    string `mapstructure:"influxOrg"`
-	InfluxBucket string `mapstructure:"influxBucket"`
+	InfluxURL      string `mapstructure:"influxURL"`
+	InfluxToken    string `mapstructure:"influxToken"`
+	InfluxOrg      string `mapstructure:"influxOrg"`
+	InfluxBucket   string `mapstructure:"influxBucket"`
 	InfluxHostname string `mapstructure:"influxHostname"`
-
 
 	Interval time.Duration `mapstructure:"interval"`
 	Verbose  bool          `mapstructure:"verbose"`
@@ -39,13 +40,13 @@ var (
 		"iperf":     []map[string]any{},
 		"ping":      []map[string]any{},
 
-		"influxURL":    "http://localhost:8086",
-		"influxToken":  "",
-		"influxOrg":    "",
-		"influxBucket": "",
+		"influxURL":      "http://localhost:8086",
+		"influxToken":    "",
+		"influxOrg":      "",
+		"influxBucket":   "",
 		"influxHostname": "",
-		"interval":     60 * time.Second,
-		"verbose":      false,
+		"interval":       60 * time.Second,
+		"verbose":        false,
 	}
 )
 

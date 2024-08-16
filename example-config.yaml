@@ -13,6 +13,8 @@ iperf:
     streams: 4
     seconds: 20
     tcp: true
+    bandwidth: "600M"
+    reverse: false
 
 ping:
   - target: "google.com"
