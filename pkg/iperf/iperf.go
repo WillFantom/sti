@@ -56,6 +56,7 @@ func (t *Iperf) RunTest() (*tester.Result, error) {
 	c.SetStreams(t.Streams)
 	c.SetTimeSec(t.Seconds)
 	c.SetInterval(1)
+	c.StdOut = true
 	if t.TCP {
 		c.SetProto(iperfcli.PROTO_TCP)
 	} else {
@@ -69,7 +70,7 @@ func (t *Iperf) RunTest() (*tester.Result, error) {
 	}
 	<-c.Done
 	if c.Report().Error != "" || len(c.Report().Start.Connected) == 0 {
-		return nil, fmt.Errorf("iperf test failed: %s", c.Report().Error)
+		return nil, fmt.Errorf("iperf test failed: %s", c.Report().String())
 	}
 
 	return &tester.Result{

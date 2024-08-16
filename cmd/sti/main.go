@@ -62,7 +62,7 @@ var (
 				tests = append(tests, ping.New(pingConfig.Target, pingConfig.Count))
 			}
 
-			// exit if no tests?
+			// exit if no tests
 			logrus.WithField("count", len(tests)).Infoln("configured tests")
 			if len(tests) == 0 {
 				logrus.WithError(fmt.Errorf("no tests configured")).Infoln("exiting")
