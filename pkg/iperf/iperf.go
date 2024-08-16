@@ -14,15 +14,19 @@ type Iperf struct {
 	Streams    int
 	Seconds    int
 	TCP        bool
+	Bandwidth  string
+	Reverse    bool
 }
 
-func New(serverIP string, serverPort int, streams int, seconds int, tcp bool) tester.Test {
+func New(serverIP string, serverPort int, streams int, seconds int, tcp bool, bandwidth string, reverse bool) tester.Test {
 	return &Iperf{
 		ServerIP:   serverIP,
 		ServerPort: serverPort,
 		Streams:    streams,
 		Seconds:    seconds,
 		TCP:        tcp,
+		Bandwidth:  bandwidth,
+		Reverse:    reverse,
 	}
 }
 
@@ -37,6 +41,8 @@ func (t *Iperf) Config() map[string]any {
 		"streams":     t.Streams,
 		"seconds":     t.Seconds,
 		"tcp":         t.TCP,
+		"bandwidth":   t.Bandwidth,
+		"reverse":     t.Reverse,
 	}
 }
 
@@ -54,6 +60,8 @@ func (t *Iperf) RunTest() (*tester.Result, error) {
 		c.SetProto(iperfcli.PROTO_TCP)
 	} else {
 		c.SetProto(iperfcli.PROTO_UDP)
+		c.SetBandwidth(t.Bandwidth)
+		c.SetReverse(t.Reverse)
 	}
 	c.SetPort(t.ServerPort)
 	if err := c.Start(); err != nil {
