@@ -2,8 +2,6 @@ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 github.com/BGrewell/go-conversions v0.0.0-20201203155646-5e189e4ca087/go.mod h1:XtXcz/MP04vhr6c6R/5gZPJZVQpbXlFsKTHr5yy/5sU=
 github.com/BGrewell/go-conversions v0.0.0-20211209224842-146e47cfb964 h1:oTRrG2R01peLK4R2lA+pMr0hr8sluLNo1S+k2K2JIY0=
 github.com/BGrewell/go-conversions v0.0.0-20211209224842-146e47cfb964/go.mod h1:XtXcz/MP04vhr6c6R/5gZPJZVQpbXlFsKTHr5yy/5sU=
-github.com/BGrewell/go-iperf v0.0.0-20231130220520-9a30093ddea1 h1:DDXrxMgbNU2kdkq4kBmtB9J36U4iB2vfy1GzwUj7xX4=
-github.com/BGrewell/go-iperf v0.0.0-20231130220520-9a30093ddea1/go.mod h1:sWGSo1gJ21Z52zaN0HrMTPVKtorsAX8JjkH1k3+IPHg=
 github.com/BGrewell/tail v1.0.0 h1:sG+Uvv+UApHtj5z+AWWB9i5m2SCH0RLfxYqXujYQo+Q=
 github.com/BGrewell/tail v1.0.0/go.mod h1:0PFYWAobUZKZLEYIxxmjFgnfvCLA600LkFbGO9KFIRA=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
@@ -95,8 +93,8 @@ github.com/sagikazarmark/locafero v0.4.0 h1:HApY1R9zGo4DBgr7dqsTH/JJxLTTsOt7u6ke
 github.com/sagikazarmark/locafero v0.4.0/go.mod h1:Pe1W6UlPYUk/+wc/6KFhbORCfqzgYEpgQ3O5fPuL3H4=
 github.com/sagikazarmark/slog-shim v0.1.0 h1:diDBnUNK9N/354PgrxMywXnAwEr1QZcOr6gto+ugjYE=
 github.com/sagikazarmark/slog-shim v0.1.0/go.mod h1:SrcSrq8aKtyuqEI1uvTDTK1arOWRIczQRv+GVI1AkeQ=
-github.com/showwin/speedtest-go v1.7.8 h1:UZbFQ/ArVgPvkR03egSeTM2FXBd6qJsLp8lzt9aeod0=
-github.com/showwin/speedtest-go v1.7.8/go.mod h1:uLgdWCNarXxlYsL2E5TOZpCIwpgSWnEANZp7gfHXHu0=
+github.com/showwin/speedtest-go v1.7.9 h1:5b3T3U3WSppVXFqsIqF1zdHRYKKVuPNpzFU71HnYNEY=
+github.com/showwin/speedtest-go v1.7.9/go.mod h1:uLgdWCNarXxlYsL2E5TOZpCIwpgSWnEANZp7gfHXHu0=
 github.com/sirupsen/logrus v1.9.3 h1:dueUQJ1C2q9oE3F7wvmSGAaVtTmUizReu6fjN8uqzbQ=
 github.com/sirupsen/logrus v1.9.3/go.mod h1:naHLuLoDiP4jHNo9R0sCBMtWGeIprob74mVsIT4qYEQ=
 github.com/sourcegraph/conc v0.3.0 h1:OQTbbt6P72L20UqAkXXuLOj79LfEanQ+YQFNpLA9ySo=
